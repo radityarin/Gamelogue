@@ -64,9 +64,4 @@ class GamelistFragment : BaseFragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        gameViewModel.getAllGames()
-    }
-
 }

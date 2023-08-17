@@ -23,6 +23,10 @@ class FavoriteFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun initData() {
+        gameViewModel.getFavoriteGames()
+    }
+
     override fun initRecyclerView() {
         gameAdapter = GameAdapter {
             requireActivity().goToDetail(it)
@@ -37,7 +41,6 @@ class FavoriteFragment : BaseFragment() {
                 rvGame.showViewWithCondition(isShow = games.isNotEmpty())
             }
             gameAdapter.submitList(games)
-            binding.srlRefresh.isRefreshing = false
         }
     }
 
@@ -51,12 +54,8 @@ class FavoriteFragment : BaseFragment() {
         super.initClickListener()
         binding.srlRefresh.setOnRefreshListener {
             gameViewModel.getFavoriteGames()
+            binding.srlRefresh.isRefreshing = false
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        gameViewModel.getFavoriteGames()
     }
 
 }

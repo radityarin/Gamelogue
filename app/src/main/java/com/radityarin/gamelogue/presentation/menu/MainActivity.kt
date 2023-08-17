@@ -67,7 +67,4 @@ class MainActivity : BaseActivity() {
         super.onResume()
     }
 
-    override fun onResumeFragments() {
-        super.onResumeFragments()
-    }
 }
