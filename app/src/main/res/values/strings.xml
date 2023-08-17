@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Gamelogue</string>
+    <string name="user_id">User ID</string>
+    <string name="id">ID</string>
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="data_not_found">Data not found</string>
+</resources>

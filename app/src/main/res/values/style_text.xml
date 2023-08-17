@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    TEXT-->
+
+    <style name="heading" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">28sp</item>
+        <item name="fontFamily">@font/interbold</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="medium" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/intermedium</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="regular" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">@font/interregular</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="semibold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/intersemibold</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <style name="buttonText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/interbold</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
+    <!--    BUTTON-->
+
+    <style name="primaryButtonsDefault" parent="buttonText">
+        <item name="android:background">
+            @drawable/background_border_rounded_primary_buttons_default
+        </item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingStart">@dimen/layout_padding_16</item>
+        <item name="android:paddingEnd">@dimen/layout_padding_16</item>
+        <item name="android:paddingTop">@dimen/layout_padding_12</item>
+        <item name="android:paddingBottom">@dimen/layout_padding_12</item>
+    </style>
+
+    <style name="redButtonsDefault" parent="buttonText">
+        <item name="android:background">
+            @drawable/background_border_rounded_primary_buttons_default_red
+        </item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingStart">@dimen/layout_padding_16</item>
+        <item name="android:paddingEnd">@dimen/layout_padding_16</item>
+        <item name="android:paddingTop">@dimen/layout_padding_12</item>
+        <item name="android:paddingBottom">@dimen/layout_padding_12</item>
+    </style>
+
+    <style name="primaryButtonsDefaultWhite" parent="buttonText">
+        <item name="android:background">
+            @drawable/background_border_rounded_primary_buttons_default_white
+        </item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:paddingStart">@dimen/layout_padding_16</item>
+        <item name="android:paddingEnd">@dimen/layout_padding_16</item>
+        <item name="android:paddingTop">@dimen/layout_padding_12</item>
+        <item name="android:paddingBottom">@dimen/layout_padding_12</item>
+    </style>
+
+    <style name="whiteButtonsDefault" parent="buttonText">
+        <item name="android:background">
+            @drawable/background_border_rounded_primary_buttons_default
+        </item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingStart">@dimen/layout_padding_16</item>
+        <item name="android:paddingEnd">@dimen/layout_padding_16</item>
+        <item name="android:paddingTop">@dimen/layout_padding_12</item>
+        <item name="android:paddingBottom">@dimen/layout_padding_12</item>
+    </style>
+
+    <style name="primaryButtonsDisabled" parent="primaryButtonsDefault">
+        <item name="android:background">
+            @drawable/background_border_rounded_primary_buttons_disabled
+        </item>
+    </style>
+
+
+    <!-- Edit Text -->
+
+    <style name="myEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:fontFamily">@font/interregular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/layout_padding_12</item>
+    </style>
+
+    <style name="myEditText.dropdown" parent="myEditText">
+        <item name="android:drawableEnd">@drawable/ic_dropdown_down</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">false</item>
+        <item name="android:longClickable">false</item>
+    </style>
+
+    <style name="myEditTextSearch" parent="Widget.AppCompat.EditText">
+        <item name="android:fontFamily">@font/interregular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="drawableStartCompat">@drawable/ic_baseline_search_24</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/layout_padding_12</item>
+        <item name="android:background">@drawable/selector_edit_text</item>
+    </style>
+
+    <!-- set the rounded drawable as background to your bottom sheet -->
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_round_top</item>
+        <item name="behavior_peekHeight">600dp</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" >
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="BaseBottomSheetDialogTheme" parent="BottomSheetDialogTheme" />
+
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="fontFamily">@font/intermedium</item>
+    </style>
+
+</resources>

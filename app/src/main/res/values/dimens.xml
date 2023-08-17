@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="button_large_max_width">328dp</dimen>
+    <dimen name="button_large_max_height">48dp</dimen>
+
+    <dimen name="button_extra_small_max_width">78dp</dimen>
+    <dimen name="button_extra_small_max_height">26dp</dimen>
+
+    <dimen name="very_small_corner_radius">8dp</dimen>
+    <dimen name="small_corner_radius">10dp</dimen>
+    <dimen name="large_corner_radius">16dp</dimen>
+
+    <dimen name="button_1_text_size">14sp</dimen>
+
+    <dimen name="layout_margin_32">32dp</dimen>
+    <dimen name="layout_margin_24">24dp</dimen>
+    <dimen name="layout_margin_16">16dp</dimen>
+    <dimen name="layout_margin_14">14dp</dimen>
+    <dimen name="layout_margin_12">12dp</dimen>
+    <dimen name="layout_margin_8">8dp</dimen>
+    <dimen name="layout_margin_6">6dp</dimen>
+    <dimen name="layout_margin_4">4dp</dimen>
+    <dimen name="layout_padding_16">16dp</dimen>
+    <dimen name="layout_padding_12">12dp</dimen>
+
+    <dimen name="height_action_bar">56dp</dimen>
+    <dimen name="height_tab_layout">38dp</dimen>
+    <dimen name="height_action_bar_with_search_view">80dp</dimen>
+    <dimen name="height_bottom_navigation_stepper">78dp</dimen>
+    <dimen name="height_divider">1dp</dimen>
+
+    <dimen name="image_picker_size">88dp</dimen>
+    <dimen name="image_size">80dp</dimen>
+
+    <dimen name="edit_button_size">24dp</dimen>
+
+    <dimen name="padding_tab_layout">8dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+</resources>
