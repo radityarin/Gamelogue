@@ -1,5 +1,6 @@
 package com.radityarin.gamelogue.domain.repositories
 
+import androidx.paging.PagingData
 import com.radityarin.gamelogue.data.source.remote.network.Status
 import com.radityarin.gamelogue.domain.model.Game
 import kotlinx.coroutines.flow.Flow
@@ -14,4 +15,5 @@ interface AppRepository {
     fun getFavoriteGames(): Flow<Status<List<Game>>>
     fun insertFavoriteGame(game: Game)
     fun deleteFavoriteGame(game: Game)
+    fun getGamesPagination(): Flow<PagingData<Game>>
 }

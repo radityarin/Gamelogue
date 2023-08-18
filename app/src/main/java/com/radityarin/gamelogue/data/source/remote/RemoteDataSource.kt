@@ -1,11 +1,16 @@
 package com.radityarin.gamelogue.data.source.remote
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.radityarin.gamelogue.data.source.remote.network.ApiResponse
 import com.radityarin.gamelogue.data.source.remote.network.ApiServiceApp
 import com.radityarin.gamelogue.domain.model.Game
 import com.radityarin.gamelogue.utils.mapper.GameResponseToDomainMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
+
+const val NETWORK_PAGE_SIZE = 25
 
 class RemoteDataSource(
     private val apiServiceApp: ApiServiceApp
@@ -26,6 +31,18 @@ class RemoteDataSource(
                 send(ApiResponse.Error(e.message.toString()))
             }
         }
+    }
+
+    suspend fun getGamesPagination(): Flow<PagingData<Game>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                GamePagingSource(service = apiServiceApp)
+            }
+        ).flow
     }
 
     suspend fun getAllGamesWithPagination(page: Int, pageSize: Int): Flow<ApiResponse<List<Game>>> {

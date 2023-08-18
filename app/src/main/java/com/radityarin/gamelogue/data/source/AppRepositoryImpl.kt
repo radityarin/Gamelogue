@@ -1,5 +1,6 @@
 package com.radityarin.gamelogue.data.source
 
+import androidx.paging.PagingData
 import com.radityarin.gamelogue.data.source.remote.LocalDataSource
 import com.radityarin.gamelogue.data.source.remote.RemoteDataSource
 import com.radityarin.gamelogue.data.source.remote.network.ApiResponse
@@ -67,6 +68,11 @@ class AppRepositoryImpl(
                     send(Status.HttpError(apiResponse.httpError))
                 }
             }
+        }
+
+    override fun getGamesPagination(): Flow<PagingData<Game>> =
+        channelFlow {
+            send(remoteDataSource.getGamesPagination().first())
         }
 
     override fun searchGames(query: String): Flow<Status<List<Game>>> = channelFlow {

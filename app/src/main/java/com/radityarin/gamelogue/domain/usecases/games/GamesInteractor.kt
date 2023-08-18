@@ -1,5 +1,6 @@
 package com.radityarin.gamelogue.domain.usecases.games
 
+import androidx.paging.PagingData
 import com.radityarin.gamelogue.data.source.remote.network.Status
 import com.radityarin.gamelogue.domain.model.Game
 import com.radityarin.gamelogue.domain.repositories.AppRepository
@@ -12,6 +13,9 @@ class GamesInteractor(private val repository: AppRepository) : GamesUseCase {
 
     override fun getAllGamesWithPagination(page: Int, pageSize: Int): Flow<Status<List<Game>>> =
         repository.getAllGamesWithPagination(page, pageSize)
+
+    override fun getGamesPagination(): Flow<PagingData<Game>> =
+        repository.getGamesPagination()
 
     override fun searchGames(query: String): Flow<Status<List<Game>>> =
         repository.searchGames(query)

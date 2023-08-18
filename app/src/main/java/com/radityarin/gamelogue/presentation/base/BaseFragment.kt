@@ -1,6 +1,5 @@
 package com.radityarin.gamelogue.presentation.base
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment : Fragment() {
-
-    private lateinit var currentLoadingDialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater,

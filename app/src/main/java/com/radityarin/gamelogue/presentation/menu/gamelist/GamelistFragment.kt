@@ -4,19 +4,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.lifecycleScope
 import com.radityarin.gamelogue.adapter.GameAdapter
+import com.radityarin.gamelogue.adapter.GamePaginationAdapter
 import com.radityarin.gamelogue.databinding.FragmentGameListBinding
 import com.radityarin.gamelogue.presentation.base.BaseFragment
 import com.radityarin.gamelogue.presentation.menu.GameViewModel
 import com.radityarin.gamelogue.utils.exts.goToDetail
 import com.radityarin.gamelogue.utils.exts.showViewWithCondition
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GamelistFragment : BaseFragment() {
 
     private var _binding: FragmentGameListBinding? = null
     private val binding get() = _binding!!
-    private lateinit var gameAdapter: GameAdapter
+    private lateinit var gamePaginationAdapter: GamePaginationAdapter
     private val gameViewModel: GameViewModel by viewModel()
 
     override fun setLayout(inflater: LayoutInflater, container: ViewGroup?): View {
@@ -25,23 +29,17 @@ class GamelistFragment : BaseFragment() {
     }
 
     override fun initRecyclerView() {
-        gameAdapter = GameAdapter {
+        gamePaginationAdapter = GamePaginationAdapter {
             requireActivity().goToDetail(it)
         }
-        binding.rvGame.adapter = gameAdapter
+        binding.rvGame.adapter = gamePaginationAdapter
     }
 
     override fun initData() {
-        gameViewModel.getAllGames()
-    }
-
-    override fun initObserver() {
-        gameViewModel.games.observe(this) { games ->
-            with(binding) {
-                tvDataNotFound.showViewWithCondition(isShow = games.isEmpty())
-                rvGame.showViewWithCondition(isShow = games.isNotEmpty())
+        viewLifecycleOwner.lifecycleScope.launch {
+            gameViewModel.getGamesPagination().collectLatest { games ->
+                gamePaginationAdapter.submitData(games)
             }
-            gameAdapter.submitList(games)
         }
     }
 

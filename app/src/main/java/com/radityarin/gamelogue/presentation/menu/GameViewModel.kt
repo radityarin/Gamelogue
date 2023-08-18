@@ -4,11 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.radityarin.gamelogue.data.source.remote.network.Status
 import com.radityarin.gamelogue.domain.model.Game
 import com.radityarin.gamelogue.domain.usecases.games.GamesUseCase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class GameViewModel(
@@ -46,6 +48,9 @@ class GameViewModel(
             }
         }
     }
+
+    fun getGamesPagination(): Flow<PagingData<Game>> =
+        gamesUseCase.getGamesPagination().cachedIn(viewModelScope)
 
     fun getFavoriteGames() {
         viewModelScope.launch(job) {
