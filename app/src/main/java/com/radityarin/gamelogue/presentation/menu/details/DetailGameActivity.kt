@@ -43,6 +43,7 @@ class DetailGameActivity : BaseActivity() {
                 tvDescription.text = Html.fromHtml(it.description, Html.FROM_HTML_MODE_LEGACY)
                 tvGamePlayed.text = it.added.toInt().toString().addPlayed()
                 tvPublisher.text = it.publisher
+                gameViewModel.checkFavorite(it.id)
             }
 
             gameViewModel.isGameFavorite.observe(this@DetailGameActivity) {

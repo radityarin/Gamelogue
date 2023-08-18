@@ -8,11 +8,18 @@ import com.radityarin.gamelogue.data.source.remote.network.Status
 import com.radityarin.gamelogue.domain.model.Game
 import com.radityarin.gamelogue.domain.usecases.games.GamesUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class GameViewModel(
     private val gamesUseCase: GamesUseCase
 ) : ViewModel() {
+
+    private var job = Job()
+        get() {
+            if (field.isCancelled) field = Job()
+            return field
+        }
 
     private val _games = MutableLiveData<List<Game>>()
     val games: LiveData<List<Game>> = _games
@@ -24,7 +31,7 @@ class GameViewModel(
     val isGameFavorite: LiveData<Boolean> = _isGameFavorite
 
     fun getAllGames() {
-        viewModelScope.launch {
+        viewModelScope.launch(job) {
             gamesUseCase.getAllGames().collect { response ->
                 when (response) {
                     is Status.Loading -> {
@@ -41,7 +48,7 @@ class GameViewModel(
     }
 
     fun getFavoriteGames() {
-        viewModelScope.launch {
+        viewModelScope.launch(job) {
             gamesUseCase.getFavoriteGames().collect { response ->
                 when (response) {
                     is Status.Loading -> {
@@ -58,7 +65,7 @@ class GameViewModel(
     }
 
     fun searchGames(query: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(job) {
             gamesUseCase.searchGames(query = query).collect { response ->
                 when (response) {
                     is Status.Loading -> {
@@ -75,7 +82,7 @@ class GameViewModel(
     }
 
     fun getGamesDetail(game: Game) {
-        viewModelScope.launch {
+        viewModelScope.launch(job) {
             gamesUseCase.getGamesDetail(game.id).collect { response ->
                 when (response) {
                     is Status.Loading -> {
@@ -83,7 +90,6 @@ class GameViewModel(
                     is Status.Success -> {
                         val gamesDetail = response.data ?: Game()
                         _game.postValue(gamesDetail)
-                        checkFavorite(gamesDetail.id)
                     }
                     is Status.Error -> {
                     }
@@ -93,8 +99,8 @@ class GameViewModel(
         }
     }
 
-    private fun checkFavorite(id: Int) {
-        viewModelScope.launch {
+    fun checkFavorite(id: Int) {
+        viewModelScope.launch(job) {
             gamesUseCase.getFavoriteGames().collect { response ->
                 when (response) {
                     is Status.Loading -> {
@@ -113,13 +119,13 @@ class GameViewModel(
     }
 
     private fun insertFavoriteGame(game: Game) {
-        viewModelScope.launch {
+        viewModelScope.launch(job) {
             gamesUseCase.insertFavoriteGame(game)
         }
     }
 
     private fun deleteFavoriteGame(game: Game) {
-        viewModelScope.launch {
+        viewModelScope.launch(job) {
             gamesUseCase.deleteFavoriteGame(game)
         }
     }
@@ -133,4 +139,5 @@ class GameViewModel(
             insertFavoriteGame(game)
         }
     }
+
 }
